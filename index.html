@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estilo Urbano - Tienda de Ropa</title>
+  <style>
+    /* General */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s;
+      padding: 0;
+    }
+
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5em 2em;
+      align-items: center;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      padding: 1em;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    body.modo-oscuro {
+      background-color: #1c1c1c;
+      color: #ddd;
+    }
+
+    .modo-oscuro header, .modo-oscuro footer {
+      background-color: #222;
+    }
+
+    .modo-oscuro nav {
+      background-color: #444;
+    }
+
+    .modo-oscuro .producto {
+      background-color: #2a2a2a;
+      color: #ddd;
+    }
+
+    .modo-oscuro .footer-section {
+      background-color: #2a2a2a;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      margin-bottom: 2em;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .producto {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1em;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex: 1 1 250px;
+      max-width: 250px;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .producto h2 {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+
+    .producto .precio {
+      font-size: 1.5em;
+      color: #28a745;
+      font-weight: bold;
+      margin: 0.5em 0;
+    }
+
+    .producto .stock {
+      font-size: 0.9em;
+      color: #666;
+      margin: 0.3em 0;
+    }
+
+    .boton-comprar {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 0.6em 1.2em;
+      margin-top: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s, transform 0.1s;
+      font-size: 1em;
+      width: 100%;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .boton-comprar:hover {
+      background-color: #444;
+    }
+
+    .boton-comprar:active {
+      transform: scale(0.96);
+      background-color: #222;
+    }
+
+    footer {
+      background-color: #111;
+      color: #fff;
+      margin-top: 3em;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2em;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 2em;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      color: #ffd700;
+      margin-bottom: 1em;
+      font-size: 1.3em;
+    }
+
+    .footer-section p, .footer-section ul {
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5em;
+    }
+
+    .footer-section a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #ffd700;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #ffd700;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      background-color: #000;
+      text-align: center;
+      padding: 1em;
+      border-top: 1px solid #333;
+    }
+
+    .filtros {
+      margin: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .buscador {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 1em;
+      padding: 0 2em;
+    }
+
+    .buscador-container {
+      display: flex;
+      gap: 0.5em;
+      background: white;
+      padding: 0.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .modo-oscuro .buscador-container {
+      background: #2a2a2a;
+    }
+
+    .buscador input {
+      flex: 1;
+      padding: 0.8em 1em;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    .buscador input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .modo-oscuro .buscador input {
+      background: #333;
+      color: #ddd;
+      border-color: #555;
+    }
+
+    .btn-buscar {
+      padding: 0.8em 1.5em;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .btn-buscar:hover {
+      background: #764ba2;
+      transform: scale(1.05);
+    }
+
+    .filtro {
+      padding: 0.5em 1em;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      color: #333;
+      display: inline-block;
+    }
+
+    .filtro:hover {
+      background-color: #ddd;
+    }
+
+    .filtro.activo {
+      background-color: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .slider {
+        height: 200px;
+        font-size: 1.8em;
+      }
+
+      .buscador {
+        padding: 0 1em;
+      }
+
+      .buscador-container {
+        flex-direction: column;
+      }
+
+      .btn-buscar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Estilo Urbano</h1>
+    <p>Moda joven, urbana y con actitud</p>
+  </header>
+
+  <nav>
+    <div>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div>
+      <button onclick="toggleModoOscuro()" style="background:#555; color:#fff; border:none; padding:0.8em 1.2em; cursor:pointer; border-radius:4px;">🌙 Modo Oscuro</button>
+    </div>
+  </nav>
+
+  <div class="slider" id="inicio">
+    ⚡ NUEVA COLECCIÓN 2025 ⚡
+  </div>
+
+  <!-- Buscador -->
+  <div class="buscador">
+    <div class="buscador-container">
+      <input 
+        type="text" 
+        id="searchInput"
+        placeholder="🔍 Buscar productos..." 
+      >
+      <button class="btn-buscar" onclick="buscarProductos()">Buscar</button>
+    </div>
+  </div>
+
+  <div class="filtros" id="catalogo">
+    <a href="#" class="filtro activo" onclick="filtrarProductos('todos')">Todos</a>
+    <a href="#" class="filtro" onclick="filtrarProductos('remera')">Remeras</a>
+    <a href="#" class="filtro" onclick="filtrarProductos('pantalon')">Pantalones</a>
+    <a href="#" class="filtro" onclick="filtrarProductos('campera')">Camperas</a>
+    <a href="#" class="filtro" onclick="filtrarProductos('accesorio')">Accesorios</a>
+  </div>
+
+  <section class="container" id="productos-container">
+    <!-- Remeras -->
+    <div class="producto" data-categoria="remera">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Remera Oversize Negra">
+      <h2>Remera Oversize Negra</h2>
+      <p class="precio">$5,900</p>
+      <p class="stock">Stock: 15 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Remera Oversize Negra', 5900)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="remera">
+      <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=400&fit=crop" alt="Remera Oversize Blanca">
+      <h2>Remera Oversize Blanca</h2>
+      <p class="precio">$5,900</p>
+      <p class="stock">Stock: 20 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Remera Oversize Blanca', 5900)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="remera">
+      <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop" alt="Remera Estampada Urban">
+      <h2>Remera Estampada Urban</h2>
+      <p class="precio">$6,500</p>
+      <p class="stock">Stock: 18 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Remera Estampada Urban', 6500)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="remera">
+      <img src="https://images.unsplash.com/photo-1622445275576-721325763afe?w=400&h=400&fit=crop" alt="Remera Tie Dye">
+      <h2>Remera Tie Dye</h2>
+      <p class="precio">$7,200</p>
+      <p class="stock">Stock: 12 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Remera Tie Dye', 7200)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <!-- Camperas -->
+    <div class="producto" data-categoria="campera">
+      <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop" alt="Campera Denim Clásica">
+      <h2>Campera Denim Clásica</h2>
+      <p class="precio">$12,500</p>
+      <p class="stock">Stock: 8 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Campera Denim Clásica', 12500)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="campera">
+      <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop" alt="Campera Bomber Negro">
+      <h2>Campera Bomber Negro</h2>
+      <p class="precio">$15,000</p>
+      <p class="stock">Stock: 5 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Campera Bomber Negro', 15000)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="campera">
+      <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&h=400&fit=crop" alt="Buzo Hoodie Negro">
+      <h2>Buzo Hoodie Negro</h2>
+      <p class="precio">$11,000</p>
+      <p class="stock">Stock: 14 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Buzo Hoodie Negro', 11000)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="campera">
+      <img src="https://images.unsplash.com/photo-1577697011110-86b207c7d321?w=400&h=400&fit=crop" alt="Campera Cortaviento">
+      <h2>Campera Cortaviento</h2>
+      <p class="precio">$13,500</p>
+      <p class="stock">Stock: 10 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Campera Cortaviento', 13500)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <!-- Pantalones -->
+    <div class="producto" data-categoria="pantalon">
+      <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop" alt="Joggers Negros">
+      <h2>Joggers Negros</h2>
+      <p class="precio">$8,700</p>
+      <p class="stock">Stock: 20 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Joggers Negros', 8700)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="pantalon">
+      <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=400&fit=crop" alt="Pantalón Cargo Beige">
+      <h2>Pantalón Cargo Beige</h2>
+      <p class="precio">$9,800</p>
+      <p class="stock">Stock: 10 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Pantalón Cargo Beige', 9800)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="pantalon">
+      <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop" alt="Pantalón Cargo Verde Militar">
+      <h2>Pantalón Cargo Verde Militar</h2>
+      <p class="precio">$9,800</p>
+      <p class="stock">Stock: 12 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Pantalón Cargo Verde Militar', 9800)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="pantalon">
+      <img src="https://images.unsplash.com/photo-1542272454315-7ad9f8f8a6b3?w=400&h=400&fit=crop" alt="Jean Recto Negro">
+      <h2>Jean Recto Negro</h2>
+      <p class="precio">$10,500</p>
+      <p class="stock">Stock: 15 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Jean Recto Negro', 10500)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <!-- Accesorios -->
+    <div class="producto" data-categoria="accesorio">
+      <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop" alt="Gorra Snapback Negra">
+      <h2>Gorra Snapback Negra</h2>
+      <p class="precio">$3,200</p>
+      <p class="stock">Stock: 25 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Gorra Snapback Negra', 3200)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="accesorio">
+      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop" alt="Mochila Urbana">
+      <h2>Mochila Urbana</h2>
+      <p class="precio">$8,900</p>
+      <p class="stock">Stock: 10 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Mochila Urbana', 8900)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="accesorio">
+      <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400&h=400&fit=crop" alt="Riñonera Crossbody">
+      <h2>Riñonera Crossbody</h2>
+      <p class="precio">$4,200</p>
+      <p class="stock">Stock: 15 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Riñonera Crossbody', 4200)">🛒 Agregar al Carrito</a>
+    </div>
+
+    <div class="producto" data-categoria="accesorio">
+      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop" alt="Lentes de Sol">
+      <h2>Lentes de Sol Wayfarer</h2>
+      <p class="precio">$5,500</p>
+      <p class="stock">Stock: 12 unidades</p>
+      <a href="#" class="boton-comprar" onclick="agregarCarrito('Lentes de Sol Wayfarer', 5500)">🛒 Agregar al Carrito</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <!-- Sobre Nosotros -->
+      <div class="footer-section" id="nosotros">
+        <h3>Sobre Nosotros</h3>
+        <p>
+          Somos <strong>Estilo Urbano</strong>, una tienda dedicada a ofrecer 
+          las últimas tendencias en moda urbana y streetwear. Desde 2020, 
+          trabajamos para que expreses tu estilo único con prendas de calidad 
+          y diseños exclusivos.
+        </p>
+        <p style="margin-top: 1em;">
+          Nuestra misión es vestir a la generación que marca tendencia, 
+          ofreciendo productos accesibles sin comprometer la calidad.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer-section" id="contacto">
+        <h3>Contacto</h3>
+        <ul>
+          <li>📍 Dirección: Av. Principal 1234, Buenos Aires</li>
+          <li>📞 Teléfono: +54 11 1234-5678</li>
+          <li>📧 Email: info@estilourbano.com</li>
+          <li>⏰ Horario: Lun - Sáb: 10:00 - 20:00</li>
+        </ul>
+        <div class="social-icons">
+          <a href="#" title="Facebook">📘</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">🐦</a>
+          <a href="#" title="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="footer-section">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo Completo</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estilo Urbano. Todos los derechos reservados.</p>
+      <p style="margin-top:0.5em; font-size:0.9em;">Desarrollado con ❤️ por Estilo Urbano Team</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleModoOscuro() {
+      document.body.classList.toggle("modo-oscuro");
+      localStorage.setItem('modoOscuro', document.body.classList.contains('modo-oscuro'));
+    }
+
+    // Cargar preferencia
+    if (localStorage.getItem('modoOscuro') === 'true') {
+      document.body.classList.add('modo-oscuro');
+    }
+
+    // Filtrar productos
+    function filtrarProductos(categoria) {
+      const productos = document.querySelectorAll('.producto');
+      const filtros = document.querySelectorAll('.filtro');
+      
+      // Actualizar filtros activos
+      filtros.forEach(f => f.classList.remove('activo'));
+      event.target.classList.add('activo');
+      
+      // Mostrar/ocultar productos
+      productos.forEach(producto => {
+        if (categoria === 'todos' || producto.dataset.categoria === categoria) {
+          producto.style.display = 'block';
+        } else {
+          producto.style.display = 'none';
+        }
+      });
+      
+      return false;
+    }
+
+    // Buscar productos
+    function buscarProductos() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const productos = document.querySelectorAll('.producto');
+      
+      productos.forEach(producto => {
+        const nombre = producto.querySelector('h2').textContent.toLowerCase();
+        if (nombre.includes(searchTerm)) {
+          producto.style.display = 'block';
+        } else {
+          producto.style.display = 'none';
+        }
+      });
+    }
+
+    // Enter para buscar
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        buscarProductos();
+      }
+    });
+
+    // Agregar al carrito (simulado)
+    function agregarCarrito(nombre, precio) {
+      alert(`✅ ${nombre} agregado al carrito!\nPrecio: $${precio.toLocaleString('es-AR')}\n\nNota: Esta es una versión demo. Para funcionalidad completa, visita la tienda con PHP.`);
+      return false;
+    }
+
+    // Scroll suave para enlaces
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
